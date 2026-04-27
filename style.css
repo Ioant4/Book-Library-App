@@ -1,0 +1,109 @@
+body{
+    font-family: sans-serif;
+    background-color: #F3E4C9;
+    
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    background-color: #BABF94;
+    border-radius: 20px;
+    color: hwb(40 91% 1%);
+}
+
+#library-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-card {
+    height: 250px;
+    border: 5px solid #A98B76; 
+    border-radius: 12px; 
+    background-color: #BFA28C;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    cursor: pointer;
+}
+
+.add-button span {
+    font-size: 5rem; 
+    color: #A98B76;
+    
+}
+
+.add-button:hover {
+    background-color: #b99c86;
+    transform: translateY(-5px);
+}
+
+.search-panel{
+    background-color: #F3E4C9;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    /*display: none;*/
+}
+
+.search-input{
+    background-color:white;
+    border-color: #6d4c3d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    outline: none;
+    font-size: 1.2rem;
+    margin-top: 50px;
+    padding: 12px 20px;
+    width: 60%;
+    max-width: 500px;
+    border: 2px solid #BFA28C;
+    border-radius: 15px;
+    
+}
+
+.home-btn{
+    background-color: #BFA28C;
+    color: white;
+    padding: 10px 25px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-results{
+    background-color: #BFA28C;
+    width: 80vw;
+    height: 80vh;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.search-card{
+    background-color: #f1f1f1;
+    width: 77vw;
+    height: 10vh;
+    margin-top: 15px;
+    border-radius: 10px;
+    
+    display: flex; 
+    align-items: center;     
+    justify-content: space-between; 
+    padding: 0 20px;         
+    box-sizing: border-box;
+}
