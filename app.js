@@ -15,6 +15,9 @@ homebtn.addEventListener("click", function(){
     overlay.style.display = "none";
 });
 
+
+
+
 searchInput.addEventListener('keypress', function(e) {
     if(e.key === 'Enter') { 
         const query = searchInput.value; 
@@ -68,7 +71,7 @@ async function searchBooks(query) {
         setTimeout(() => {
             isSearching = false; 
             searchInput.style.opacity = "1";
-        }, 3000);
+        }, 3000); // Waiting 3 seconds between each search.
     }
 }
 
@@ -76,7 +79,7 @@ function createCardHTML(title, author, thumbnail) {
     
     const cleanTitle = title.replace(/"/g, '&quot;');
     const cleanAuthor = author.replace(/"/g, '&quot;');
-
+    // HTML for horizotnal cards in the search menu.
     return `
         <div class="search-card">
             <div class="card-info">
@@ -91,6 +94,7 @@ function createCardHTML(title, author, thumbnail) {
     `;
 }
 
+
 const resultsContainer = document.getElementById("search-results");
 
 resultsContainer.addEventListener("click", function(e) {
@@ -103,18 +107,33 @@ resultsContainer.addEventListener("click", function(e) {
         const newBook = document.createElement("div");
         newBook.classList.add("book-card", "info-sash-card"); 
 
-        newBook.innerHTML = `
+        const index = document.querySelectorAll('.book-card').length;
+        newBook.setAttribute('data-index', index);
+        // HTML for card after we picked a book.
+        newBook.innerHTML = ` 
             <img src="${imgUrl}" alt="${title}" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
             <div class="book-info-sash">
-                <h4>${title}</h4>
-                <p>${author}</p>
+                <div>
+                    <h4>${title}</h4>
+                    <p>${author}</p>
+                </div>
                 <div class="rmv-btn">
                     <span>&minus;</span>
                 </div>
             </div>
         `;
-
         libraryGrid.insertBefore(newBook, document.getElementById("add-book-btn"));
+        
         overlay.style.display = "none";
     }
 });
+
+const libraryGrid = document.getElementById("library-grid");
+
+libraryGrid.addEventListener("click", function(e){ // Event listener for the whole grid, and using
+    const removeBtn = e.target.closest(".rmv-btn"); // e as the remove button.
+    if(removeBtn) {
+        const cardToRemove = removeBtn.closest(".book-card");
+        cardToRemove.remove();
+    }
+})
