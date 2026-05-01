@@ -54,7 +54,13 @@ h1{
     align-items: center;
     transition: all 0.3s ease;
     flex-direction: column;
-    display: none;
+    /*display: none;*/
+}
+
+.search-home{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
 .search-input{
@@ -91,7 +97,7 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    display: none;
 }
 
 .search-card{
@@ -116,7 +122,6 @@ h1{
     flex: 1; 
     margin-right: 15px; 
     overflow: hidden;
-    
 }
 
 .card-info h4{

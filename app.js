@@ -2,23 +2,33 @@ const button = document.getElementById("add-book-btn");
 const overlay = document.getElementById("search-overlay");
 const homebtn = document.getElementById("home-btn");
 const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+const searchResults = document.getElementById("search-results")
 let isSearching = false;
 
 button.addEventListener("click", function(){
     overlay.style.display = "flex";
+    searchResults.style.display = "none";
     const resultsContainer = document.getElementById("search-results");
     resultsContainer.innerHTML = "";
     searchInput.value = "";
 });
 
 homebtn.addEventListener("click", function(){
+    searchResults.style.display = "none";
     overlay.style.display = "none";
 });
 
-
-
+searchBtn.addEventListener("click", function(){
+    const query = searchInput.value; 
+        if(query.trim() !== "") {
+            searchBooks(query);
+        }
+})
 
 searchInput.addEventListener('keypress', function(e) {
+    
+    
     if(e.key === 'Enter') { 
         const query = searchInput.value; 
         if(query.trim() !== "") {
@@ -58,6 +68,7 @@ async function searchBooks(query) {
                     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` 
                     : "https://via.placeholder.com/128x192?text=No+Cover";
 
+                searchResults.style.display = "flex";
                 resultsContainer.innerHTML += createCardHTML(title, author, image);
             });
         } else {
@@ -81,6 +92,7 @@ function createCardHTML(title, author, thumbnail) {
     const cleanAuthor = author.replace(/"/g, '&quot;');
     // HTML for horizotnal cards in the search menu.
     return `
+           
         <div class="search-card">
             <div class="card-info">
                 <h4 style="margin: 0;">${title}</h4>
